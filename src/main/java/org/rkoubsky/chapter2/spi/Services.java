@@ -14,27 +14,27 @@ public class Services {
     private static final Map<String, Provider> providers = new ConcurrentHashMap<>();
 
     //prevent instantiation
-    private Services(){
+    private Services() {
 
     }
 
     // Provider registration API
-    public void registerDefaultProvider(Provider provider){
+    public static void registerDefaultProvider(final Provider provider) {
         registerProvider(DEFAULT_PROVIDER_NAME, provider);
     }
 
-    public void registerProvider(String name, Provider provider){
+    public static void registerProvider(final String name, final Provider provider) {
         providers.put(name, provider);
     }
 
     // Service access API
-    public Service getDefaultService(){
+    public static Service getDefaultService() {
         return getService(DEFAULT_PROVIDER_NAME);
     }
 
-    public Service getService(String providerName){
-        Provider provider = providers.get(providerName);
-        if(provider == null){
+    public static Service getService(final String providerName) {
+        final Provider provider = providers.get(providerName);
+        if (provider == null) {
             throw new IllegalArgumentException("No provider registered with name: " + providerName);
         }
         return provider.newService();
