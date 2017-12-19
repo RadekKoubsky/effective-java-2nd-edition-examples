@@ -3,7 +3,7 @@ package org.rkoubsky.chapter3.equals.composition;
 import java.awt.*;
 
 /**
- * Follow the advice of Item 16, “Favor composition over inheritance.”
+ * Follow the advice of Item 16, “Favor compositioasdn over inheritance.”
  * Instead of having ColorPoint extend Point, give
  * ColorPoint a private Point field and a public view method (Item 5) that returns
  * the point at the same position as this color point
@@ -30,19 +30,19 @@ public class ColorPoint {
     }
 
     @Override
+    public int hashCode() {
+        int result = this.point.hashCode();
+        result = 31 * result + this.color.hashCode();
+        return result;
+    }
+
+    @Override
     public boolean equals(final Object o) {
         if (!(o instanceof ColorPoint)) {
             return false;
         }
         final ColorPoint colorPoint = (ColorPoint) o;
         return colorPoint.point.equals(this.point) && colorPoint.color == this.color;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = this.point.hashCode();
-        result = 31 * result + this.color.hashCode();
-        return result;
     }
 
     @Override

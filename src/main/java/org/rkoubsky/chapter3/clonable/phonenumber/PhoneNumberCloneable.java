@@ -33,6 +33,15 @@ public class PhoneNumberCloneable implements Cloneable {
     }
 
     @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + this.areaCode;
+        result = 31 * result + this.prefix;
+        result = 31 * result + this.lineNumber;
+        return result;
+    }
+
+    @Override
     public boolean equals(final Object o) {
         if (this == o) {
             return true;
@@ -44,24 +53,6 @@ public class PhoneNumberCloneable implements Cloneable {
         return this.areaCode == that.areaCode &&
                 this.prefix == that.prefix &&
                 this.lineNumber == that.lineNumber;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + this.areaCode;
-        result = 31 * result + this.prefix;
-        result = 31 * result + this.lineNumber;
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "PhoneNumberCloneable{" +
-                "areaCode=" + this.areaCode +
-                ", prefix=" + this.prefix +
-                ", lineNumber=" + this.lineNumber +
-                '}';
     }
 
     /**
@@ -86,5 +77,14 @@ public class PhoneNumberCloneable implements Cloneable {
         } catch (final CloneNotSupportedException e) {
             throw new AssertionError(); // Can't happen
         }
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneNumberCloneable{" +
+                "areaCode=" + this.areaCode +
+                ", prefix=" + this.prefix +
+                ", lineNumber=" + this.lineNumber +
+                '}';
     }
 }

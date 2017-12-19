@@ -13,7 +13,7 @@ public class CompositionDemo {
         final ColorPoint p3 = new ColorPoint(1, 2, Color.BLUE);
 
         /*
-        As we use composition and correctly implement equals, we should preserve
+        As we use compositioasdn and correctly implement equals, we should preserve
         transitivity in the equals method.
         * */
         System.out.printf("Calling %s equals %s\n", p1, p2);

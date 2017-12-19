@@ -1,6 +1,5 @@
 package org.rkoubsky.chapter2.stack;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
@@ -14,6 +13,15 @@ public class Stack {
 
     public Stack() {
         this.elements = new Object[DEFAULT_INITIAL_CAPACITY];
+    }
+
+    public static void main(final String[] args) {
+        final Stack stack = new Stack();
+        stack.push("First element.");
+        stack.push("Second element");
+        System.out.println("Array of elements within the stack before pop operation: " + Arrays.asList(stack.elements));
+        System.out.println("Popping the second element off the stack: " + stack.pop());
+        System.out.println("Array of elements within the stack after pop operation: " + Arrays.asList(stack.elements));
     }
 
     public void push(final Object element) {
@@ -47,14 +55,5 @@ public class Stack {
      */
     private void ensureCapacity() {
         this.elements = Arrays.copyOf(this.elements, this.size * 2 + 1);
-    }
-
-    public static void main(final String[] args) {
-        final Stack stack = new Stack();
-        stack.push("First element.");
-        stack.push("Second element");
-        System.out.println("Array of elements within the stack before pop operation: " + Arrays.asList(stack.elements));
-        System.out.println("Popping the second element off the stack: " + stack.pop());
-        System.out.println("Array of elements within the stack after pop operation: " + Arrays.asList(stack.elements));
     }
 }
